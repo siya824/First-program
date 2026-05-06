@@ -3,11 +3,11 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 df=pd.read_csv("data(2).csv")
-X=df[['HoursStudied']]
-y=df['ExamScore']
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+X= df.iloc[:, :-1].values [['HoursStudied']]
+Y= df.iloc[:, -1].values['ExamScore']
+X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2, random_state=42)
 model=LinearRegression()
-model.fit(X_train, y_train)
+model.fit(X_train, Y_train)
 st.title("Exam Score Predictior")
 st.write("Enter hours studied to predict the exam score.")
 hours=st.number_input("Hours Studied:", min_value=0.0, step=0.1)
